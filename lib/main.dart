@@ -1,3 +1,4 @@
+import 'package:coffee/routes/app_router.dart';
 import 'package:coffee/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -11,13 +12,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: LoginScreen());
+    final _appRouter = AppRouter();
+
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      title: 'Coffee',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      routerConfig: _appRouter.config(),
+    );
   }
 }
-
