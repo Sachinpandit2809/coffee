@@ -36,13 +36,11 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text("data"),
-      // ),
+      
       body: selectedItemList[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
-          // elevation: 0,
+     
 
           currentIndex: selectedIndex,
           fixedColor: MyColor.orange,

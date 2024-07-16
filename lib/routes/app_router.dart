@@ -9,10 +9,7 @@ import 'app_router.gr.dart';
 class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(
-          page: LoginRoute.page,
-          path: RoutesName.login,initial: true
-        ),
+        AutoRoute(page: LoginRoute.page, path: RoutesName.login, initial: true),
         AutoRoute(
           page: Dashboard.page,
           path: RoutesName.dashboard,
@@ -21,7 +18,10 @@ class AppRouter extends $AppRouter {
           page: Notificaton.page,
           path: RoutesName.notification,
         ),
-        AutoRoute(page: OrderRoute.page, path: RoutesName.order, ),
+        AutoRoute(
+          page: OrderRoute.page,
+          path: RoutesName.order,
+        ),
         AutoRoute(
           page: FavouriteRoute.page,
           path: RoutesName.favourite,

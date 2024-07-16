@@ -1,8 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:auto_route/auto_route.dart';
 import 'package:coffee/extension/num_extention.dart';
 import 'package:coffee/resource/colors.dart';
 import 'package:coffee/resource/png_images.dart';
 import 'package:coffee/resource/style/k_text_style.dart';
+import 'package:coffee/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -18,6 +21,7 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           Container(
@@ -78,7 +82,6 @@ class _HomepageState extends State<Homepage> {
                     20.heightBox,
                     TextFormField(
                       decoration: InputDecoration(
-                        
                           prefixIconColor: Colors.white.withOpacity(0.7),
                           focusedBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -146,11 +149,7 @@ class foodBox extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              // margin: EdgeInsets.only(top: 400),
-              // height: 100,
-              child: Image.asset("assets/images/png/cup1.png"),
-            ),
+            Image.asset("assets/images/png/cup1.png"),
             Text(
               "CappuCino",
               style: KTextStyle.kSixteen,
@@ -164,13 +163,18 @@ class foodBox extends StatelessWidget {
               children: [
                 Text("\u{20B9} " + "250"),
                 70.widthBox,
-                Container(
-                  height: 30,
-                  width: 30,
-                  decoration: BoxDecoration(
-                      color: MyColor.orange,
-                      borderRadius: BorderRadius.circular(6)),
-                  child: Icon(Icons.add),
+                InkWell(
+                  onTap: () {
+                    context.router.pushNamed(RoutesName.favourite);
+                  },
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                        color: MyColor.orange,
+                        borderRadius: BorderRadius.circular(6)),
+                    child: Icon(Icons.add),
+                  ),
                 )
               ],
             ),
@@ -199,13 +203,18 @@ class foodBox extends StatelessWidget {
               children: [
                 Text("\u{20B9} " + "250"),
                 70.widthBox,
-                Container(
-                  height: 30,
-                  width: 30,
-                  decoration: BoxDecoration(
-                      color: MyColor.orange,
-                      borderRadius: BorderRadius.circular(6)),
-                  child: Icon(Icons.add),
+                InkWell(
+                  onTap: () {
+                    context.router.pushNamed(RoutesName.favourite);
+                  },
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                        color: MyColor.orange,
+                        borderRadius: BorderRadius.circular(6)),
+                    child: Icon(Icons.add),
+                  ),
                 )
               ],
             ),

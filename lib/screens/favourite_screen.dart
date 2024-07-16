@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:coffee/extension/context_extension.dart';
+// import 'package:coffee/extension/context_extension.dart';
 import 'package:coffee/extension/num_extention.dart';
 import 'package:coffee/resource/colors.dart';
 import 'package:coffee/resource/png_images.dart';
 import 'package:coffee/resource/style/k_text_style.dart';
+import 'package:coffee/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -26,7 +27,11 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
           style: KTextStyle.kTwenty
               .copyWith(fontWeight: FontWeight.w700, color: Colors.black),
         ),
-        leading: Icon(Icons.arrow_back_ios),
+        leading: InkWell(
+            onTap: () {
+              context.router.back();
+            },
+            child: const Icon(Icons.arrow_back_ios)),
         actions: const [
           Padding(
             padding: EdgeInsets.only(right: 18.0),
@@ -40,12 +45,12 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
         children: [
           Center(
             child: Container(
-              margin: EdgeInsets.symmetric(vertical: 20),
+              margin: const EdgeInsets.symmetric(vertical: 20),
               height: 200,
               width: 200,
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 236, 233, 224),
-                  image: DecorationImage(
+                  color: const Color.fromARGB(255, 236, 233, 224),
+                  image: const DecorationImage(
                       image: AssetImage(
                     PngImages.cup3,
                   )),
@@ -55,7 +60,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
           Column(
             children: [
               Container(
-                padding: EdgeInsets.only(left: 20),
+                padding: const EdgeInsets.only(left: 20),
                 color: Colors.white,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,6 +80,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                           Icons.star,
                           color: MyColor.orange,
                         ),
+                        // ignore: prefer_adjacent_string_concatenation
                         Text("\u{20B9} " + "250",
                             style: KTextStyle.kSixteen
                                 .copyWith(fontWeight: FontWeight.w600)),
@@ -89,7 +95,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                         ),
                         10.widthBox,
                         Container(
-                          margin: EdgeInsets.only(right: 20),
+                          margin: const EdgeInsets.only(right: 20),
                           height: 30,
                           width: 30,
                           decoration: BoxDecoration(
@@ -102,28 +108,28 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                   ],
                 ),
               ),
-              Divider(
+              const Divider(
                 indent: 20,
                 endIndent: 20,
                 color: Colors.black45,
                 thickness: 1.5,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: const Text(
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: Text(
                   "Discription",
                   style: KTextStyle.kSixteen,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: const Text.rich(TextSpan(
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Text.rich(TextSpan(
                     text:
                         "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85ml of fresh milk the fo.. Read More")),
               ),
               10.heightBox,
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text("Size", style: KTextStyle.kTwenty),
               ),
               10.heightBox,
@@ -140,7 +146,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                         decoration: BoxDecoration(
                             border: Border.all(color: MyColor.orange),
                             borderRadius: BorderRadius.circular(8)),
-                        child: Center(
+                        child: const Center(
                           child: Text("S"),
                         ),
                       ),
@@ -153,7 +159,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                         decoration: BoxDecoration(
                             border: Border.all(color: MyColor.orange),
                             borderRadius: BorderRadius.circular(8)),
-                        child: Center(
+                        child: const Center(
                           child: Text("M"),
                         ),
                       ),
@@ -166,7 +172,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                         decoration: BoxDecoration(
                             border: Border.all(color: MyColor.orange),
                             borderRadius: BorderRadius.circular(8)),
-                        child: Center(
+                        child: const Center(
                           child: Text("L"),
                         ),
                       ),
@@ -175,7 +181,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                 ),
               ),
               10.heightBox,
-              Divider(
+              const Divider(
                 indent: 5,
                 endIndent: 5,
               ),
@@ -187,26 +193,31 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                   children: [
                     Column(
                       children: [
-                        Text("Price", style: KTextStyle.kTwenty),
+                        const Text("Price", style: KTextStyle.kTwenty),
                         Text("\u{20B9} 245",
                             style: KTextStyle.kSixteen.copyWith(
                                 color: MyColor.orange,
                                 fontWeight: FontWeight.w500)),
                       ],
                     ),
-                    Container(
-                        height: 50,
-                        width: 160,
-                        decoration: BoxDecoration(
-                            color: MyColor.orange,
-                            borderRadius: BorderRadius.circular(8)),
-                        child: Center(
-                          child: Text(
-                            "Buy Now",
-                            style: KTextStyle.kSixteen
-                                .copyWith(color: Colors.white),
-                          ),
-                        ))
+                    InkWell(
+                      onTap: () {
+                        context.router.pushNamed(RoutesName.order);
+                      },
+                      child: Container(
+                          height: 50,
+                          width: 160,
+                          decoration: BoxDecoration(
+                              color: MyColor.orange,
+                              borderRadius: BorderRadius.circular(8)),
+                          child: Center(
+                            child: Text(
+                              "Buy Now",
+                              style: KTextStyle.kSixteen
+                                  .copyWith(color: Colors.white),
+                            ),
+                          )),
+                    )
                   ],
                 ),
               )
